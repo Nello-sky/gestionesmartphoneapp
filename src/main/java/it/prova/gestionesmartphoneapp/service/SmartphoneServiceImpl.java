@@ -150,5 +150,28 @@ public class SmartphoneServiceImpl implements SmartphoneService {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
-	
+	@Override
+	public void rimuoviMaPrimaDisinstallaApp(Long idSmartphoneInput) throws Exception {
+		// questo è come una connection
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			// questo è come il MyConnection.getConnection()
+			entityManager.getTransaction().begin();
+
+			// uso l'injection per il dao
+			smartphoneDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			smartphoneDAO.deleteSmartphoneAndUnlinkApp(idSmartphoneInput);
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
 }

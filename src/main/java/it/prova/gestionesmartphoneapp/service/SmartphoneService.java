@@ -18,7 +18,7 @@ public interface SmartphoneService {
 	
 	  public void disinstallaApp(Long idSmartphoneInput, Long idAppInput) throws Exception;
 	
-	
+	  public void rimuoviMaPrimaDisinstallaApp(Long idSmartphoneInput) throws Exception;
 	
 	
 	

@@ -52,9 +52,17 @@ public class SmartphoneDAOImpl implements SmartphoneDAO {
 		this.entityManager = entityManager;
 	}
 
-	public void deleteAppJoin(Long idBranoInput, Long idAppInput) throws Exception {
+	@Override
+	public void deleteAppJoin(Long idSmartphoneInput, Long idAppInput) throws Exception {
 		entityManager.createNativeQuery("delete from smartphone_app c where c.smartphone_id = ?1 and c.app_id = ?2 ")
-				.setParameter(1, idBranoInput).setParameter(2, idAppInput).executeUpdate();
+				.setParameter(1, idSmartphoneInput).setParameter(2, idAppInput).executeUpdate();
+	}
+	
+	@Override //attenzione alla delete massiva, non fare mille query , e delete 
+	public void deleteSmartphoneAndUnlinkApp(Long idSmartphoneInput) throws Exception {
+		entityManager.createNativeQuery("delete from smartphone_app c where c.smartphone_id = ?1").setParameter(1, idSmartphoneInput)
+				.executeUpdate();
+		entityManager.createNativeQuery("delete from smartphone c where c.id = ?1").setParameter(1, idSmartphoneInput).executeUpdate();
 	}
 
 }

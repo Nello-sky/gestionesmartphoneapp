@@ -19,8 +19,9 @@ public class TestSmartphoneApp {
 			//testInserimentoNuovaApp(appServiceInstance);
 			//testAggiornaVersioneOS(smartphoneServiceInstance);
 			//testAggiornaVersioneApp(appServiceInstance);
-			//testInstallaAppEsistenti(smartphoneServiceInstance, appServiceInstance);
-			smartphoneServiceInstance.disinstallaApp(1L, 1L);
+			testInstallaAppEsistenti(smartphoneServiceInstance, appServiceInstance);
+			//smartphoneServiceInstance.disinstallaApp(1L, 1L);
+			smartphoneServiceInstance.rimuoviMaPrimaDisinstallaApp(2L);
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -37,7 +38,7 @@ public class TestSmartphoneApp {
 	private static void testInserimentoNuovoSmartphone(SmartphoneService smartphoneServiceInstance) throws Exception {
 		System.out.println(".......testInserimentoNuovoSmartphone inizio.............");
 
-		Smartphone smartphoneInstance = new Smartphone("samsung", "g8", 180, 12);
+		Smartphone smartphoneInstance = new Smartphone("nokia", "32", 20, 3);
 		smartphoneServiceInstance.inserisciNuovo(smartphoneInstance);
 //		if (smartphoneInstance.getId() == null)
 //			throw new RuntimeException("testInserimentoNuovoSmartphone fallito ");
@@ -66,12 +67,12 @@ public class TestSmartphoneApp {
 		// carico uno smartphone
 		if (smartphoneServiceInstance.listAll().isEmpty())
 			throw new RuntimeException("testDeleteAtleta fallito: non ci sono smartphones da caricare. ");
-		Smartphone smartphoneInstance = smartphoneServiceInstance.listAll().get(0);
+		Smartphone smartphoneInstance = smartphoneServiceInstance.listAll().get(1);
 
 		// inserisco un app
 		if (appServiceInstance.listAll().isEmpty())
 			throw new RuntimeException("testDeleteAtleta fallito: non ci sono app da caricare. ");
-		App appInstance = appServiceInstance.listAll().get(0);
+		App appInstance = appServiceInstance.listAll().get(1);
 
 		// collego
 		smartphoneServiceInstance.installaApp(smartphoneInstance, appInstance);
@@ -89,7 +90,7 @@ public class TestSmartphoneApp {
 	private static void testInserimentoNuovaApp(AppService appServiceInstance) throws Exception {
 		System.out.println(".......testInserimentoNuovaApp inizio.............");
 
-		App appInstance = new App("meta", 2);
+		App appInstance = new App("maps", 5);
 		appServiceInstance.inserisciNuovo(appInstance);
 //		if (smartphoneInstance.getId() == null)
 //			throw new RuntimeException("testInserimentoNuovaApp fallito ");
