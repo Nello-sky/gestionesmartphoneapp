@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.model.Smartphone;
 
-public class SmartphoneDAOImpl implements SmartphoneDAO{
-	
+public class SmartphoneDAOImpl implements SmartphoneDAO {
+
 	private EntityManager entityManager;
 
 	@Override
@@ -28,7 +28,7 @@ public class SmartphoneDAOImpl implements SmartphoneDAO{
 			throw new Exception("Problema valore in input");
 		}
 		input = entityManager.merge(input);
-		
+
 	}
 
 	@Override
@@ -50,6 +50,11 @@ public class SmartphoneDAOImpl implements SmartphoneDAO{
 	@Override
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
+	}
+
+	public void deleteAppJoin(Long idBranoInput, Long idAppInput) throws Exception {
+		entityManager.createNativeQuery("delete from brano_genere c where c.brano_id = ?1 and c.app_id = ?2 ")
+				.setParameter(1, idBranoInput).setParameter(2, idAppInput).executeUpdate();
 	}
 
 }

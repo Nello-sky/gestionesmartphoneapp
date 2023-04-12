@@ -35,8 +35,8 @@ public class Smartphone {
 	private String modello;
 	@Column(name = "prezzo")
 	private Integer prezzo;
-	@Column(name = "versione")
-	private Integer versione;
+	@Column(name = "versioneos") // attenzione era versione OS
+	private Integer versioneOS;
 	
 	// campi per le time info del record
 	@CreationTimestamp
@@ -54,13 +54,13 @@ public class Smartphone {
 	}
 	
 
-	public Smartphone( String marca, String modello, Integer prezzo, Integer versione) {
+	public Smartphone( String marca, String modello, Integer prezzo, Integer versioneOS) {
 		super();
 		
 		this.marca = marca;
 		this.modello = modello;
 		this.prezzo = prezzo;
-		this.versione = versione;
+		this.versioneOS = versioneOS;
 	}
 
 
@@ -96,12 +96,12 @@ public class Smartphone {
 		this.prezzo = prezzo;
 	}
 
-	public Integer getVersione() {
-		return versione;
+	public Integer getVersioneOS() {
+		return versioneOS;
 	}
 
-	public void setVersione(Integer versione) {
-		this.versione = versione;
+	public void setVersioneOS(Integer versione) {
+		this.versioneOS = versione;
 	}
 
 	public Set<App> getApps() {
@@ -131,7 +131,7 @@ public class Smartphone {
 	@Override
 	public String toString() {
 		return "Smartphone [id=" + id + ", marca=" + marca + ", modello=" + modello + ", prezzo=" + prezzo
-				+ ", versione=" + versione + "]";
+				+ ", versione=" + versioneOS + "]";
 	}
 
 

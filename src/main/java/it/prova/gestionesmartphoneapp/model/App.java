@@ -50,9 +50,8 @@ public class App {
 	public App() {
 	}
 	
-	public App(Long id, String nome, Integer versione) {
+	public App( String nome, Integer versione) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.versione = versione;
 	}
