@@ -53,7 +53,7 @@ public class SmartphoneDAOImpl implements SmartphoneDAO {
 	}
 
 	public void deleteAppJoin(Long idBranoInput, Long idAppInput) throws Exception {
-		entityManager.createNativeQuery("delete from brano_genere c where c.brano_id = ?1 and c.app_id = ?2 ")
+		entityManager.createNativeQuery("delete from smartphone_app c where c.smartphone_id = ?1 and c.app_id = ?2 ")
 				.setParameter(1, idBranoInput).setParameter(2, idAppInput).executeUpdate();
 	}
 
